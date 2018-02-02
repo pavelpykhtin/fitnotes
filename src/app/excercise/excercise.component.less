@@ -1,0 +1,26 @@
+@import '../utils/utils.less';
+
+:host{
+    &{
+        .flex-container(vertical);
+    }
+
+    .header{
+        .flex-fixed;
+    }
+
+    .repeat{
+        .flex-fill;
+
+        .flex-container;
+        .inner-spacing(8px);
+    }
+
+    .buttons{
+        .flex-fixed;
+        
+        .flex-container;
+        .inner-spacing(8px);
+        justify-content: flex-end;
+    }
+}

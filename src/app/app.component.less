@@ -1,0 +1,11 @@
+@import 'utils/utils.less';
+
+:host{
+    .flex-container(vertical);
+    .flex-fill;
+    padding: 16px;
+}
+
+:host /deep/ & > * {
+    .flex-fill;
+}

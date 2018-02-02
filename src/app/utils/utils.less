@@ -1,0 +1,35 @@
+.flex-container(@direction: horizontal) {
+    display: flex;
+
+    & when (@direction = vertical){
+        flex-direction: column;
+    }
+
+    & when (@direction = horizontal){
+        flex-direction: row;
+    }
+}
+
+.flex-fixed{
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.flex-fill{
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.inner-spacing(@spacing, @direction: horizontal) {
+    & when (@direction = horizontal) {
+        & > * + * {
+            margin-left: @spacing;
+        }
+    }
+
+    & when (@direction = vertical) {
+        & > * + * {
+            margin-top: @spacing;
+        }
+    }    
+}
