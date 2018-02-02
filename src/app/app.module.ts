@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatInputModule, MatListModule, MatMenuModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatListModule, MatMenuModule, MatIconModule, MatSelectModule } from '@angular/material';
 import { } from '@angular/material';
 import { Routes, RouterModule } from '@angular/router';
 
-import routes from './routes';
+import { routes } from './routes';
 import { AppComponent } from './app.component';
 import { ExcerciseComponent } from './excercise/excercise.component';
 import { TrainingPlanListComponent } from './training-plan-list/training-plan-list.component';
@@ -27,6 +27,7 @@ import { TrainingPlanEditorComponent } from './training-plan-editor/training-pla
     MatInputModule,
     MatMenuModule,
     MatIconModule,
+    MatSelectModule,
     RouterModule.forRoot(routes, {enableTracing: true})
   ],
   providers: [],

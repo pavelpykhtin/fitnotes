@@ -1,0 +1,32 @@
+@import './../utils/utils.less';
+
+:host{
+    .flex-container(vertical);
+}
+
+.properties{
+    .flex-fixed;
+}
+
+.excercises{
+    .flex-container(vertical);
+    .flex-fill;
+}
+
+.excercise{
+    .flex-container(vertical);
+}
+
+.buttons-panel{
+    .flex-container;
+    justify-content: flex-end;
+}
+
+.parameters{
+    .flex-container;
+    .inner-spacing(8px);
+}
+
+.param-selector /deep/ .mat-input-infix {
+    width: auto;
+}

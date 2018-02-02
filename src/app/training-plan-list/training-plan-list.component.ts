@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ITrainingListItem } from './training-list-item';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,9 @@ import { ITrainingListItem } from './training-list-item';
 export class TrainingPlanListComponent implements OnInit {
   plans: ITrainingListItem[];
 
-  constructor() { 
+  constructor(
+     private router: Router
+  ) { 
     this.plans = [
       <ITrainingListItem>{id: 'plan-1', name: 'Понедельник'},
       <ITrainingListItem>{id: 'plan-2', name: 'Среда'},
@@ -21,4 +24,14 @@ export class TrainingPlanListComponent implements OnInit {
   ngOnInit() {
   }
 
+  delete(plan: ITrainingListItem){
+
+  }
+
+  edit(plan: ITrainingListItem){
+  }
+
+  add(){
+    this.router.navigate(['training-plans/new']);    
+  }
 }

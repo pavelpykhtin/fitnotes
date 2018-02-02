@@ -1,3 +1,38 @@
 <p>
-  training-plan-editor works!
+    training-plan-editor works!
 </p>
+
+<mat-form-field class='properties'>
+    <input matInput placeholder='Название' [value]='plan.name' />
+</mat-form-field>
+
+<mat-list class='excercises'>
+    <div mat-list-item *ngFor='let excercise of plan.excercises' class='excercise'>
+        <mat-form-field class='excercise-name'>
+            <input matInput [value]='excercise.name' placeholder='Упражнение' />
+        </mat-form-field>
+
+        <div class='parameters'>
+            <mat-form-field class='param-selector'>
+                <mat-select placeholder='Параметр 1' [(value)]='excercise.paramA'>
+                    <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class='param-selector'>
+                <mat-select placeholder='Параметр 2' [(value)]='excercise.paramB'>
+                    <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class='param-selector'>
+                <mat-select placeholder='Параметр 3' [(value)]='excercise.paramC'>
+                    <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</mat-list>
+
+<div class='buttons-panel'>
+    <button mat-button (click)='cancel()'>Отмена</button>
+    <button mat-raised-button color='primary' (click)='save()'>Сохранить</button>
+</div>
