@@ -6,8 +6,8 @@
     <input matInput placeholder='Название' [value]='plan.name' />
 </mat-form-field>
 
-<mat-list class='excercises'>
-    <div mat-list-item *ngFor='let excercise of plan.excercises' class='excercise'>
+<div class='excercises'>
+    <mat-card *ngFor='let excercise of plan.excercises' class='excercise'>
         <mat-form-field class='excercise-name'>
             <input matInput [value]='excercise.name' placeholder='Упражнение' />
         </mat-form-field>
@@ -29,8 +29,8 @@
                 </mat-select>
             </mat-form-field>
         </div>
-    </div>
-</mat-list>
+    </mat-card>
+</div>
 
 <div class='buttons-panel'>
     <button mat-button (click)='cancel()'>Отмена</button>
