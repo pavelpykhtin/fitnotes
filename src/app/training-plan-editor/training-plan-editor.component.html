@@ -3,33 +3,37 @@
 </p>
 
 <mat-form-field class='properties'>
-    <input matInput placeholder='Название' [value]='plan.name' />
+    <input matInput placeholder='Название' [(ngModel)]='plan.name' />
 </mat-form-field>
 
 <div class='excercises'>
     <mat-card *ngFor='let excercise of plan.excercises' class='excercise'>
         <mat-form-field class='excercise-name'>
-            <input matInput [value]='excercise.name' placeholder='Упражнение' />
+            <input matInput [(ngModel)]='excercise.name' placeholder='Упражнение' />
         </mat-form-field>
 
         <div class='parameters'>
             <mat-form-field class='param-selector'>
-                <mat-select placeholder='Параметр 1' [(value)]='excercise.paramA'>
+                <mat-select placeholder='Параметр 1' [(ngModel)]='excercise.paramA'>
                     <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field class='param-selector'>
-                <mat-select placeholder='Параметр 2' [(value)]='excercise.paramB'>
+                <mat-select placeholder='Параметр 2' [(ngModel)]='excercise.paramB'>
                     <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field class='param-selector'>
-                <mat-select placeholder='Параметр 3' [(value)]='excercise.paramC'>
+                <mat-select placeholder='Параметр 3' [(ngModel)]='excercise.paramC'>
                     <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
     </mat-card>
+
+    <button mat-fab (click)='add()' class='add'>
+        <mat-icon>add</mat-icon>
+    </button>
 </div>
 
 <div class='buttons-panel'>

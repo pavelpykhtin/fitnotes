@@ -10,6 +10,9 @@ import { AppComponent } from './app.component';
 import { ExcerciseComponent } from './excercise/excercise.component';
 import { TrainingPlanListComponent } from './training-plan-list/training-plan-list.component';
 import { TrainingPlanEditorComponent } from './training-plan-editor/training-plan-editor.component';
+import { TrainingPlanRepository } from './database/training-plan-repository.service';
+import { DataSource } from './database/data-source';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +23,7 @@ import { TrainingPlanEditorComponent } from './training-plan-editor/training-pla
     TrainingPlanEditorComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatListModule,
@@ -29,9 +33,12 @@ import { TrainingPlanEditorComponent } from './training-plan-editor/training-pla
     MatIconModule,
     MatSelectModule,
     MatCardModule,
-    RouterModule.forRoot(routes, {enableTracing: true})
+    RouterModule.forRoot(routes, {enableTracing: false})
   ],
-  providers: [],
+  providers: [
+    DataSource,
+    TrainingPlanRepository
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
