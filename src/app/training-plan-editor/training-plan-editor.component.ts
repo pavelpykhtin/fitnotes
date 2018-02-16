@@ -23,7 +23,7 @@ export class TrainingPlanEditorComponent implements OnInit {
     private planRepository: TrainingPlanRepository
   ) {
     this.plan = <ITrainingPlan>{
-      name: '', 
+      name: '',
       excercises: []
     };
     this.parameters = [
@@ -40,7 +40,7 @@ export class TrainingPlanEditorComponent implements OnInit {
 
   add() {
     this.plan.excercises.push(<IExcercise> {
-      id: uuid()
+      id: uuid().toString()
     });
   }
 
@@ -50,7 +50,7 @@ export class TrainingPlanEditorComponent implements OnInit {
 
   save() {
     this.planRepository.put(this.buildModel(this.plan))
-      .then(() => this.router.navigate(['']));    
+      .then(() => this.router.navigate(['']));
   }
 
   private buildModel(pe: ITrainingPlan): ITrainingPlanModel {
@@ -62,7 +62,7 @@ export class TrainingPlanEditorComponent implements OnInit {
     };
   }
 
-  private buildModelExcercise(pe: IExcercise): IExcerciseModel{
+  private buildModelExcercise(pe: IExcercise): IExcerciseModel {
     return <IExcerciseModel>{
       id: uuid().toString(),
       ...pe,

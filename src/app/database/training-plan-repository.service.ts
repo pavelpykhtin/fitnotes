@@ -5,8 +5,8 @@ import { DataSource } from './data-source';
 @Injectable()
 export class TrainingPlanRepository {
     constructor(
-        @Inject(DataSource) private dataSource: DataSource
-    ){
+        private dataSource: DataSource
+    ) {
 
     }
 
@@ -18,7 +18,7 @@ export class TrainingPlanRepository {
         return this.dataSource.trainingPlans.put(plan);
     }
 
-    getAll(): Promise<ITrainingPlan[]>{
+    getAll(): Promise<ITrainingPlan[]> {
         return this.dataSource.trainingPlans.toArray();
     }
 

@@ -1,9 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatInputModule, MatListModule, MatMenuModule, MatIconModule, MatSelectModule, MatCardModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatIconModule,
+  MatSelectModule,
+  MatCardModule } from '@angular/material';
 import { } from '@angular/material';
 import { Routes, RouterModule } from '@angular/router';
+import { MomentModule } from 'angular2-moment/moment.module';
 
 import { routes } from './routes';
 import { AppComponent } from './app.component';
@@ -13,6 +21,9 @@ import { TrainingPlanEditorComponent } from './training-plan-editor/training-pla
 import { TrainingPlanRepository } from './database/training-plan-repository.service';
 import { DataSource } from './database/data-source';
 import { FormsModule } from '@angular/forms';
+import { TrainingExcerciseComponent } from './training-excercise/training-excercise.component';
+import { TrainingFactoryService } from './training-factory.service';
+import { TrainingRepository } from './database/training-repository.service';
 
 
 @NgModule({
@@ -20,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     ExcerciseComponent,
     TrainingPlanListComponent,
-    TrainingPlanEditorComponent
+    TrainingPlanEditorComponent,
+    TrainingExcerciseComponent
   ],
   imports: [
     FormsModule,
@@ -33,11 +45,14 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatSelectModule,
     MatCardModule,
-    RouterModule.forRoot(routes, {enableTracing: false})
+    RouterModule.forRoot(routes, {enableTracing: false}),
+    MomentModule
   ],
   providers: [
     DataSource,
-    TrainingPlanRepository
+    TrainingPlanRepository,
+    TrainingRepository,
+    TrainingFactoryService
   ],
   bootstrap: [AppComponent]
 })

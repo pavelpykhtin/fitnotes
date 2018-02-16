@@ -4,4 +4,4 @@ export interface IExcercise {
     paramA: string;
     paramB: string;
     paramC: string;
-};
+}

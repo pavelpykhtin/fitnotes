@@ -5,7 +5,7 @@
 <mat-list class='list'>
     <mat-list-item *ngFor='let plan of plans'>
         <span class='plan-name'>{{plan.name}}</span>
-        <button mat-button class='start-training'>Начать</button>
+        <button mat-button class='start-training' (click)='start(plan)'>Начать</button>
         <button mat-button [matMenuTriggerFor]='menu' class='plan-menu-button'>
       <mat-icon>more_vert</mat-icon>
     </button>
