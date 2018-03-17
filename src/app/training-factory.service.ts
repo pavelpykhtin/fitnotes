@@ -13,19 +13,23 @@ export class TrainingFactoryService {
     private trainingPlanRepository: TrainingPlanRepository
   ) { }
 
-  createTraining(planId: string): Promise<ITraining> {
-    return this.trainingPlanRepository.get(planId)
-      .then(plan => {
-        return <ITraining>{
-          id: uuid().toString(),
-          timestamp: +moment(),
-          excercises: plan.excercises.map(x => <IAttempt>{
-            excerciseId: uuid().toString(),
-            valueA: null,
-            valueB: null,
-            valueC: null
-          })
-        };
-      });
+  async createTraining(planId: string): Promise<ITraining> {
+    const plan = await this.trainingPlanRepository.get(planId)
+
+    const trainingId = uuid().toString();
+    const excercises = plan.excercises.map(x => <IAttempt>{
+      id: uuid().toString(),
+      trainingId: trainingId,
+      excerciseId: x.id,
+      valueA: null,
+      valueB: null,
+      valueC: null
+    });
+
+    return <ITraining>{
+      id: trainingId,
+      timestamp: +moment(),
+      excercises: excercises
+    };
   }
 }

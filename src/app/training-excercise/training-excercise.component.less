@@ -1,0 +1,43 @@
+@import "../utils/utils.less";
+
+:host{
+    .flex-container(vertical);
+}
+
+.parameters{
+    .flex-fill;
+}
+
+.parameter {
+  .flex-container;
+  align-items: center;
+}
+
+.name {
+  .flex-fill;
+}
+
+.inc-button {
+  .flex-fixed;
+}
+
+.dec-button {
+  .flex-fixed;
+}
+
+.value {
+  .flex-fixed;
+  width: 100px;
+}
+
+:host /deep/ .value-container  {
+    .mat-form-field-infix{
+        width: 100px;
+    }
+}
+
+.buttons-panel{
+    .flex-container;
+    .flex-fixed;
+    justify-content: flex-end;
+}

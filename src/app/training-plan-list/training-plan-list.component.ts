@@ -35,13 +35,11 @@ export class TrainingPlanListComponent implements OnInit {
   edit(plan: ITrainingListItem) {
   }
 
-  start(plan: ITrainingListItem) {
-    this.trainingFactory.createTraining(plan.id)
-      .then(training => {
-        this.trainingRepository.put(training);
-        return training;
-      })
-      .then(training => this.router.navigate(['training/excercise/:id', { id: training.id }]));
+  async start(plan: ITrainingListItem) {
+    const training = await this.trainingFactory.createTraining(plan.id);
+    await this.trainingRepository.put(training);
+
+    this.router.navigate(['training', training.id, 'excercise', 0]);
   }
 
   add() {

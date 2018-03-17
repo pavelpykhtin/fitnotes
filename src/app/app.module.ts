@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { TrainingExcerciseComponent } from './training-excercise/training-excercise.component';
 import { TrainingFactoryService } from './training-factory.service';
 import { TrainingRepository } from './database/training-repository.service';
+import { ExcerciseEditorComponent } from './excercise-editor/excercise-editor.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { TrainingRepository } from './database/training-repository.service';
     ExcerciseComponent,
     TrainingPlanListComponent,
     TrainingPlanEditorComponent,
-    TrainingExcerciseComponent
+    TrainingExcerciseComponent,
+    ExcerciseEditorComponent
   ],
   imports: [
     FormsModule,

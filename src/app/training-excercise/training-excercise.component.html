@@ -1,3 +1,30 @@
 <p>
-  training-excercise works!
+    training-excercise works!
 </p>
+
+<h1>
+    {{excercise.name}}
+</h1>
+<div class='parameters'>
+    <form>
+        <div class='parameter' *ngFor='let parameter of parameters'>
+            <div class='name'>{{parameter.name}}</div>
+
+            <button mat-icon-button class='dec-button'>
+                <mat-icon>remove</mat-icon>
+            </button>
+            <mat-form-field class='value-container'>
+                <input matInput name='value' [(ngModel)]='parameter.value' />
+            </mat-form-field>
+            <button mat-icon-button class='inc-button'>
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class='buttons-panel'>
+    <button mat-button (click)='endTraining()'>Закончить тренировку</button>
+    <button mat-button (click)='skip()'>Пропустить</button>
+    <button mat-raised-button class='mat-primary' (click)='done()'>Сделано!</button>
+</div>

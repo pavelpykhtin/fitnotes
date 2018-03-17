@@ -7,5 +7,5 @@ export const routes: Route[] = [
     <Route>{path: '', component: TrainingPlanListComponent},
     <Route>{path: 'training-plans/new', component: TrainingPlanEditorComponent},
     <Route>{path: 'training-plans/:id', component: TrainingPlanEditorComponent},
-    <Route>{path: 'training/excercise/:id', component: TrainingExcerciseComponent}
+    <Route>{path: 'training/:trainingId/excercise/:excerciseId', component: TrainingExcerciseComponent}
 ];

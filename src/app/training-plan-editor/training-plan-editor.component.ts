@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ITrainingPlan } from './training-plan';
 import { Router } from '@angular/router';
-import { IExcerciseParameter } from './excercise-parameter';
+import { IExcerciseParameter } from '../excercise-editor/excercise-parameter';
 import { IExcercise } from './excercise';
 import { IExcercise as IExcerciseModel } from '../database/excercise';
 import { TrainingPlanRepository } from '../database/training-plan-repository.service';
