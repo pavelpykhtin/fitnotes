@@ -1,21 +1,23 @@
-<mat-form-field class='excercise-name'>
-    <input matInput [(ngModel)]='excercise.name' placeholder='Упражнение' />
-</mat-form-field>
+<div [formGroup]='form'>
+    <mat-form-field class='excercise-name'>
+        <input matInput formControlName='name' placeholder='Упражнение' />
+    </mat-form-field>
 
-<div class='parameters'>
-    <mat-form-field class='param-selector'>
-        <mat-select placeholder='Параметр 1' [(ngModel)]='excercise.paramA'>
-            <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field class='param-selector'>
-        <mat-select placeholder='Параметр 2' [(ngModel)]='excercise.paramB'>
-            <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field class='param-selector'>
-        <mat-select placeholder='Параметр 3' [(ngModel)]='excercise.paramC'>
-            <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+    <div class='parameters'>
+        <mat-form-field class='param-selector'>
+            <mat-select placeholder='Параметр 1' formControlName='paramA'>
+                <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class='param-selector'>
+            <mat-select placeholder='Параметр 2' formControlName='paramB'>
+                <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class='param-selector'>
+            <mat-select placeholder='Параметр 3' formControlName='paramC'>
+                <mat-option *ngFor='let parameter of parameters' [value]='parameter.id'>{{parameter.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
 </div>

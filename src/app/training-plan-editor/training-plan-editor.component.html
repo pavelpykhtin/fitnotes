@@ -1,22 +1,23 @@
 <p>
     training-plan-editor works!
 </p>
+<form [formGroup]='form'>
+    <mat-form-field class='properties'>
+        <input matInput placeholder='Название' formControlName='name' />
+    </mat-form-field>
 
-<mat-form-field class='properties'>
-    <input matInput placeholder='Название' [(ngModel)]='plan.name' />
-</mat-form-field>
+    <div class='excercises' formArrayName='excercises'>
+        <mat-card *ngFor='let excercise of excercises.controls; let i = index' class='excercise' [formGroupName]='i'>
+            <excercise-editor [parameters]='parameters' [form]='excercise'></excercise-editor>
+        </mat-card>
 
-<div class='excercises'>
-    <mat-card *ngFor='let excercise of plan.excercises' class='excercise'>
-        <excercise-editor [parameters]='parameters'></excercise-editor>
-    </mat-card>
+        <button mat-fab (click)='add()' class='add'>
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
 
-    <button mat-fab (click)='add()' class='add'>
-        <mat-icon>add</mat-icon>
-    </button>
-</div>
-
-<div class='buttons-panel'>
-    <button mat-button (click)='cancel()'>Отмена</button>
-    <button mat-raised-button color='primary' (click)='save()'>Сохранить</button>
-</div>
+    <div class='buttons-panel'>
+        <button mat-button (click)='cancel()'>Отмена</button>
+        <button mat-raised-button color='primary' (click)='save()'>Сохранить</button>
+    </div>
+</form>

@@ -7,6 +7,7 @@ import { IExcercise as IExcerciseModel } from '../database/excercise';
 import { TrainingPlanRepository } from '../database/training-plan-repository.service';
 import { ITrainingPlan as ITrainingPlanModel } from '../database/training-plan';
 import { v4 as uuid } from 'uuid';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-training-plan-editor',
@@ -17,10 +18,13 @@ import { v4 as uuid } from 'uuid';
 export class TrainingPlanEditorComponent implements OnInit {
   plan: ITrainingPlan;
   parameters: IExcerciseParameter[];
+  form: FormGroup;
+  excercises: FormArray;
 
   constructor(
     private router: Router,
-    private planRepository: TrainingPlanRepository
+    private planRepository: TrainingPlanRepository,
+    private fb: FormBuilder
   ) {
     this.plan = <ITrainingPlan>{
       name: '',
@@ -32,16 +36,26 @@ export class TrainingPlanEditorComponent implements OnInit {
       <IExcerciseParameter>{id: '3', name: 'Дистанция'},
       <IExcerciseParameter>{id: '4', name: 'Длительность'},
       <IExcerciseParameter>{id: '5', name: 'Вес'},
-    ]
+    ];
+
+    this.excercises = fb.array([]); 
+    this.form = fb.group({
+      name: '',
+      excercises: this.excercises
+    });
   }
 
   ngOnInit() {
   }
 
   add() {
-    this.plan.excercises.push(<IExcercise> {
-      id: uuid().toString()
-    });
+    this.excercises.push(this.fb.group({
+      id: uuid().toString(),
+      name: '',
+      paramA: '',
+      paramB: '',
+      paramC: ''
+    }));
   }
 
   cancel() {
@@ -49,16 +63,16 @@ export class TrainingPlanEditorComponent implements OnInit {
   }
 
   save() {
-    this.planRepository.put(this.buildModel(this.plan))
+    this.planRepository.put(this.buildModel(this.form.value))
       .then(() => this.router.navigate(['']));
   }
 
-  private buildModel(pe: ITrainingPlan): ITrainingPlanModel {
-    console.log(pe);
+  private buildModel(value: any): ITrainingPlanModel {
+    console.log(value);
     return <ITrainingPlanModel>{
       id: uuid().toString(),
-      ...pe,
-      excercises: pe.excercises.map(x => this.buildModelExcercise(x))
+      ...value,
+      excercises: value.excercises.map(x => this.buildModelExcercise(x))
     };
   }
 

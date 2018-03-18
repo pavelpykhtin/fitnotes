@@ -14,7 +14,7 @@
                 <mat-icon>remove</mat-icon>
             </button>
             <mat-form-field class='value-container'>
-                <input matInput [formControlMame]="param-{{i}}" />
+                <input matInput [formControlName]="'param-' + i" />
             </mat-form-field>
             <button mat-icon-button class='inc-button'>
                 <mat-icon>add</mat-icon>
