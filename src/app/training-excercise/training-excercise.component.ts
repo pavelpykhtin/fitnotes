@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import "rxjs/add/operator/first";
 import { IExcerciseParameter } from "./excercise-parameter";
 import { IExcercise } from "../database/excercise";
-import { Router, ActivatedRoute } from "@angular/router";
+import { TrainingService } from "../training.service";
 
 @Component({
   selector: "app-training-excercise",
@@ -11,12 +14,14 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class TrainingExcerciseComponent implements OnInit {
   parameters: IExcerciseParameter[];
   excercise: IExcercise;
+  form: FormGroup;
 
-  constructor(private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private trainingService: TrainingService
+  ) {}
 
   ngOnInit() {
-    console.log(this.router.routerState);
-
     this.parameters = [
       <IExcerciseParameter>{
         name: "param1",
@@ -34,5 +39,22 @@ export class TrainingExcerciseComponent implements OnInit {
     this.excercise = <IExcercise>{
       name: "excercise1"
     };
+
+    const group = this.parameters.reduce((seed, p, i) => {
+      seed[`param-${i}`] = new FormControl(p.value, Validators.required);
+      return seed;
+    }, {});
+    
+
+    this.form = new FormGroup(group);
+  }
+
+  async done() {
+    const currentRouteData = await this.route.params.first().toPromise();
+
+    const trainingId = currentRouteData.trainingId;
+    const excerciseId = currentRouteData.excerciseId;
+
+    this.trainingService.completeExcercise(trainingId, +excerciseId);
   }
 }

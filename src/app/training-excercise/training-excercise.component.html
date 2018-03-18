@@ -6,15 +6,15 @@
     {{excercise.name}}
 </h1>
 <div class='parameters'>
-    <form>
-        <div class='parameter' *ngFor='let parameter of parameters'>
+    <form [formGroup]='form'>
+        <div class='parameter' *ngFor='let parameter of parameters; let i = index'>
             <div class='name'>{{parameter.name}}</div>
 
             <button mat-icon-button class='dec-button'>
                 <mat-icon>remove</mat-icon>
             </button>
             <mat-form-field class='value-container'>
-                <input matInput name='value' [(ngModel)]='parameter.value' />
+                <input matInput [formControlMame]="param-{{i}}" />
             </mat-form-field>
             <button mat-icon-button class='inc-button'>
                 <mat-icon>add</mat-icon>
