@@ -1,4 +1,5 @@
 export interface IExcerciseParameter{
     name: string;
-    value: string;
+    value: number;
+    step: number;
 };

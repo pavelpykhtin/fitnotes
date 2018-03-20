@@ -3,7 +3,7 @@ import { ITrainingListItem } from './training-list-item';
 import { Router } from '@angular/router';
 import { ITrainingPlan as ITrainingPlanModel } from '../database/training-plan';
 import { TrainingPlanRepository } from '../database/training-plan-repository.service';
-import { TrainingFactoryService } from '../training-factory.service';
+import { TrainingFactoryService } from '../services/training-factory.service';
 import { TrainingRepository } from '../database/training-repository.service';
 
 @Component({

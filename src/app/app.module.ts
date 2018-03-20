@@ -23,10 +23,11 @@ import { TrainingPlanEditorComponent } from "./training-plan-editor/training-pla
 import { TrainingPlanRepository } from "./database/training-plan-repository.service";
 import { DataSource } from "./database/data-source";
 import { TrainingExcerciseComponent } from "./training-excercise/training-excercise.component";
-import { TrainingFactoryService } from "./training-factory.service";
+import { TrainingFactoryService } from "./services/training-factory.service";
 import { TrainingRepository } from "./database/training-repository.service";
 import { ExcerciseEditorComponent } from "./excercise-editor/excercise-editor.component";
-import { TrainingService } from "./training.service";
+import { TrainingService } from "./services/training.service";
+import { ParameterRepository } from "./database/parameters-repository.service";
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { TrainingService } from "./training.service";
     DataSource,
     TrainingPlanRepository,
     TrainingRepository,
+    ParameterRepository,
     TrainingFactoryService,
     TrainingService
   ],

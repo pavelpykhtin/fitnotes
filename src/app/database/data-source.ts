@@ -10,9 +10,9 @@ export class DataSource extends Dexie {
 
     constructor() {
         super('trainings');
-        this.version(1).stores({
-            trainings: '&id,timestamp',
+        this.version(2).stores({
+            trainings: '&id,timestamp,planId',
             trainingPlans: '&id,timestamp'
-        });
+        }); 
     }
 }

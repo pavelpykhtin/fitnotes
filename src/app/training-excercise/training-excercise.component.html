@@ -10,13 +10,13 @@
         <div class='parameter' *ngFor='let parameter of parameters; let i = index'>
             <div class='name'>{{parameter.name}}</div>
 
-            <button mat-icon-button class='dec-button'>
+            <button mat-icon-button class='dec-button' (click)='dec(parameter)'>
                 <mat-icon>remove</mat-icon>
             </button>
             <mat-form-field class='value-container'>
                 <input matInput [formControlName]="'param-' + i" />
             </mat-form-field>
-            <button mat-icon-button class='inc-button'>
+            <button mat-icon-button class='inc-button' (click)='inc(parameter)'>
                 <mat-icon>add</mat-icon>
             </button>
         </div>
